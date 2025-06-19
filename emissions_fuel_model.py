@@ -158,7 +158,7 @@ def compute_co_ask(distance_km: float, available_seats: int, force: bool = False
     if use_eq7:
         # Equation 7
         co_ask = (
-            -0.574 + 65.11 / distance_km + 51.85 / available_seats +
+            -0.5736 + 65.11 / distance_km + 51.85 / available_seats +
             2.489e-5 * distance_km + 1.411e-3 * available_seats -
             8.39e-8 * distance_km * available_seats
         )
@@ -167,7 +167,7 @@ def compute_co_ask(distance_km: float, available_seats: int, force: bool = False
         co_ask = (
             0.08338 + 96.54 / distance_km + 2.184 / available_seats +
             2.433e-6 * distance_km - 8.602e-4 * available_seats -
-            8.39e-8 * distance_km * available_seats
+            6.053e-8 * distance_km * available_seats
         )
 
     return round(co_ask, 2)
