@@ -51,7 +51,7 @@ def compute_fuel_ask(distance_km: float, available_seats: int, force: bool = Fal
     else:
         # Equation 2
         fuel_ask = (
-            34.67 + 6608 / distance_km - 1.196e-2 * distance_km -
+            34.67 + 6608 / distance_km - 1.196e-3 * distance_km -
             0.1354 * available_seats + 1.338e-5 * distance_km * available_seats
         )
 
