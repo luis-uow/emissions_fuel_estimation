@@ -3,7 +3,9 @@ from emissions_fuel_model import (
     compute_fuel_ask,
     compute_co2_ask,
     compute_nox_ask,
-    compute_co_ask, compute_sox_ask, compute_water_vapour_ask,
+    compute_co_ask,
+    compute_sox_ask,
+    compute_water_vapour_ask
 )
 
 # Sample aircraft test cases
