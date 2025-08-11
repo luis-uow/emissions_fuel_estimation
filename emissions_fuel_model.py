@@ -72,6 +72,36 @@ def compute_co2_ask(distance_km: float, available_seats: int, force: bool = Fals
     co2_kg_per_kg_fuel = 3.16
     return round(compute_fuel_ask(distance_km, available_seats, force) * co2_kg_per_kg_fuel, 2)
 
+def compute_sox_ask(distance_km: float, available_seats: int, force: bool = False) -> float:
+    """
+    Estimate SOₓ emissions per ASK by scaling fuel consumption.
+
+    Parameters:
+        distance_km (float): Flight distance in kilometers.
+        available_seats (int): Number of available seats.
+        force (bool): If True, bypass validation in fuel model. Defaults to False.
+
+    Returns:
+        float: Estimated SOₓ emissions per ASK (rounded to 2 decimals) in gSOx/ASK.
+    """
+    sox_kg_per_kg_fuel = 0.84 / 1000
+    return round(compute_fuel_ask(distance_km, available_seats, force) * sox_kg_per_kg_fuel, 2)
+
+def compute_water_vapour_ask(distance_km: float, available_seats: int, force: bool = False) -> float:
+    """
+    Estimate water vapour emissions per ASK by scaling fuel consumption.
+
+    Parameters:
+        distance_km (float): Flight distance in kilometers.
+        available_seats (int): Number of available seats.
+        force (bool): If True, bypass validation in fuel model. Defaults to False.
+
+    Returns:
+        float: Estimated water vapour emissions per ASK (rounded to 2 decimals) in gSOx/ASK.
+    """
+    water_vapour_kg_per_kg_fuel = 1.237
+    return round(compute_fuel_ask(distance_km, available_seats, force) * water_vapour_kg_per_kg_fuel, 2)
+
 def compute_nox_ask(distance_km: float, available_seats: int, force: bool = False) -> float:
     """
     Estimate NOₓ emissions per ASK.

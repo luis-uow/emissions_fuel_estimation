@@ -3,7 +3,7 @@ from emissions_fuel_model import (
     compute_fuel_ask,
     compute_co2_ask,
     compute_nox_ask,
-    compute_co_ask,
+    compute_co_ask, compute_sox_ask, compute_water_vapour_ask,
 )
 
 # Sample aircraft test cases
@@ -36,6 +36,8 @@ for case in test_cases:
             "Force Mode": force,
             "Fuel (g/ASK)": compute_fuel_ask(distance, seats, force),
             "CO2 (g/ASK)": compute_co2_ask(distance, seats, force),
+            "SOX (g/ASK)": compute_sox_ask(distance, seats, force),
+            "Water vapour (g/ASK)": compute_water_vapour_ask(distance, seats, force),
             "NOx (g/ASK)": compute_nox_ask(distance, seats, force),
             "CO (g/ASK)": compute_co_ask(distance, seats, force),
         }
@@ -53,7 +55,9 @@ distances = list(range(200, 11000, 1000))
 
 for d in distances:
     try:
-        print(f"{d} km | Fuel: {compute_fuel_ask(d, fixed_seats):5.2f} | CO₂: {compute_co2_ask(d, fixed_seats):5.2f} | NOₓ: {compute_nox_ask(d, fixed_seats):5.2f} | CO: {compute_co_ask(d, fixed_seats):5.2f}")
+        print(f"{d} km | Fuel: {compute_fuel_ask(d, fixed_seats):5.2f} | CO₂: {compute_co2_ask(d, fixed_seats):5.2f} | "
+              f"SOₓ: {compute_sox_ask(d, fixed_seats):5.2f} | Water vapour: {compute_water_vapour_ask(d, fixed_seats)}:5.2f | "
+              f"NOₓ: {compute_nox_ask(d, fixed_seats):5.2f} | CO: {compute_co_ask(d, fixed_seats):5.2f}")
     except Exception as e:
         print(f"{d} km | Error: {e}")
 
