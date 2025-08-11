@@ -30,6 +30,18 @@ classdef emissions_fuel_model
             co2_ask = round(fuel_ask * 3.16, 2);
         end
 
+        function sox_ask = compute_sox_ask(distance_km, available_seats, force)
+            if nargin < 3, force = false; end
+            fuel_ask = emissions_fuel_model.compute_fuel_ask(distance_km, available_seats, force);
+            sox_ask = round(fuel_ask * 0.84 / 1000, 2);
+        end
+
+        function water_vapour_ask = compute_water_vapour_ask(distance_km, available_seats, force)
+            if nargin < 3, force = false; end
+            fuel_ask = emissions_fuel_model.compute_fuel_ask(distance_km, available_seats, force);
+            water_vapour_ask = round(fuel_ask * 1.237, 2);
+        end
+
         function nox_ask = compute_nox_ask(distance_km, available_seats, force)
             if nargin < 3, force = false; end
 
